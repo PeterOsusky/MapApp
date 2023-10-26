@@ -14,6 +14,8 @@
 		D095EB462AEA9D04003C55DA /* MapAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB452AEA9D04003C55DA /* MapAppTests.swift */; };
 		D095EB502AEA9D04003C55DA /* MapAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB4F2AEA9D04003C55DA /* MapAppUITests.swift */; };
 		D095EB522AEA9D04003C55DA /* MapAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB512AEA9D04003C55DA /* MapAppUITestsLaunchTests.swift */; };
+		D095EB5F2AEA9E27003C55DA /* FourSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB5E2AEA9E27003C55DA /* FourSquare.swift */; };
+		D095EB612AEA9EAC003C55DA /* AnnotatedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB602AEA9EAC003C55DA /* AnnotatedItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		D095EB4B2AEA9D04003C55DA /* MapAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D095EB4F2AEA9D04003C55DA /* MapAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppUITests.swift; sourceTree = "<group>"; };
 		D095EB512AEA9D04003C55DA /* MapAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D095EB5E2AEA9E27003C55DA /* FourSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquare.swift; sourceTree = "<group>"; };
+		D095EB602AEA9EAC003C55DA /* AnnotatedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotatedItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +98,12 @@
 		D095EB332AEA9D02003C55DA /* MapApp */ = {
 			isa = PBXGroup;
 			children = (
-				D095EB342AEA9D02003C55DA /* MapAppApp.swift */,
+				D095EB5E2AEA9E27003C55DA /* FourSquare.swift */,
 				D095EB362AEA9D02003C55DA /* ContentView.swift */,
+				D095EB342AEA9D02003C55DA /* MapAppApp.swift */,
 				D095EB382AEA9D03003C55DA /* Assets.xcassets */,
 				D095EB3A2AEA9D03003C55DA /* Preview Content */,
+				D095EB602AEA9EAC003C55DA /* AnnotatedItem.swift */,
 			);
 			path = MapApp;
 			sourceTree = "<group>";
@@ -259,6 +265,8 @@
 			files = (
 				D095EB372AEA9D02003C55DA /* ContentView.swift in Sources */,
 				D095EB352AEA9D02003C55DA /* MapAppApp.swift in Sources */,
+				D095EB5F2AEA9E27003C55DA /* FourSquare.swift in Sources */,
+				D095EB612AEA9EAC003C55DA /* AnnotatedItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
