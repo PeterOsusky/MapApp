@@ -10,28 +10,26 @@ import MapKit
 
 struct MapView: View {
     @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 50.0755, longitude: 14.4378), // Praha as default point
+        center: CLLocationCoordinate2D(latitude: 50.0755, longitude: 14.4378),
         span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     )
 
-    @State private var annotations: [AnnotatedItem] = []
-    @State private var places: [FourSquareResult] = [] // Assuming VenueInfo is the data type you're using to store details of places from FoursquareService.
-
-
+    @ObservedObject var viewModel = MapViewModel()
+    
     var body: some View {
-        Map(coordinateRegion: $region, annotationItems: annotations) { item in
-            MapMarker(coordinate: item.coordinate, tint: .blue)
-        }
-        .onTapGesture(perform: handleTap)
-    }
+        VStack {
+            Map(coordinateRegion: $region, annotationItems: viewModel.annotations) { item in
+                MapMarker(coordinate: item.coordinate, tint: .blue)
+            }
+            .onTapGesture {
+                viewModel.handleTap(coordinate: region.center)
+            }
+            .frame(height: UIScreen.main.bounds.height / 2)
 
-    private let foursquareService = FoursquareService()
-
-    func handleTap() {
-        annotations.append(AnnotatedItem(coordinate: region.center))
-        
-        foursquareService.fetchVenueDetails(for: region.center) { info in
-            print(info)
+            List(viewModel.places, id: \.fsq_id) { place in
+                Text(place.name)
+            }
+            .frame(height: UIScreen.main.bounds.height / 2)
         }
     }
 }

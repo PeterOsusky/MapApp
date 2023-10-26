@@ -1,5 +1,5 @@
 //
-//  FourSquare.swift
+//  FoursquareService.swift
 //  MapApp
 //
 //  Created by Peter on 26/10/2023.
@@ -12,13 +12,12 @@ class FoursquareService {
     
     private let authorizationToken = "fsq3BdIvFwpCKTGbZrBAlL8GKOC/cJtgB5prVWKIXyVd/I0="
 
-    func fetchVenueDetails(for location: CLLocationCoordinate2D, completion: @escaping (String?) -> Void) {
+    func fetchVenueDetails(for location: CLLocationCoordinate2D, completion: @escaping (FourSquareResponse?) -> Void) {
         guard let url = URL(string: "https://api.foursquare.com/v3/places/search?ll=\(location.latitude),\(location.longitude)") else {
             completion(nil)
             return
         }
         
-        print(url)
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "accept")
@@ -40,11 +39,11 @@ class FoursquareService {
             
             do {
                 let decoder = JSONDecoder()
-                print(data)
                 let response = try decoder.decode(FourSquareResponse.self, from: data)
-                print(response)
+                completion(response)
             } catch let error {
                 print("Error decoding: \(error)")
+                completion(nil)
             }
         }
 

@@ -18,6 +18,7 @@
 		D095EB612AEA9EAC003C55DA /* AnnotatedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB602AEA9EAC003C55DA /* AnnotatedItem.swift */; };
 		D095EB662AEAC908003C55DA /* FourSquareResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB652AEAC908003C55DA /* FourSquareResult.swift */; };
 		D095EB682AEAC921003C55DA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB672AEAC921003C55DA /* MapView.swift */; };
+		D095EB6A2AEACADC003C55DA /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB692AEACADC003C55DA /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		D095EB602AEA9EAC003C55DA /* AnnotatedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotatedItem.swift; sourceTree = "<group>"; };
 		D095EB652AEAC908003C55DA /* FourSquareResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareResult.swift; sourceTree = "<group>"; };
 		D095EB672AEAC921003C55DA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D095EB692AEACADC003C55DA /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				D095EB672AEAC921003C55DA /* MapView.swift */,
+				D095EB692AEACADC003C55DA /* MapViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				D095EB682AEAC921003C55DA /* MapView.swift in Sources */,
 				D095EB352AEA9D02003C55DA /* MapAppApp.swift in Sources */,
 				D095EB5F2AEA9E27003C55DA /* FourSquareService.swift in Sources */,
+				D095EB6A2AEACADC003C55DA /* MapViewModel.swift in Sources */,
 				D095EB612AEA9EAC003C55DA /* AnnotatedItem.swift in Sources */,
 				D095EB662AEAC908003C55DA /* FourSquareResult.swift in Sources */,
 			);
