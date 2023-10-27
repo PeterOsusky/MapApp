@@ -38,6 +38,8 @@ class MapViewModel: ObservableObject {
                 
                 if let results = response?.results {
                     self.places = results
+                    print(results.count)
+                    print(results)
                 }
             }
         }

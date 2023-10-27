@@ -17,17 +17,14 @@ struct MapView: View {
 
     @State private var lastRegionCenter: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 50.0755, longitude: 14.4378)
     
-    @ObservedObject var viewModel = MapViewModel()
-    
+    @StateObject var viewModel = MapViewModel()
+
     var body: some View {
         VStack {
             Map(coordinateRegion: $region,
                 showsUserLocation: true,
                 annotationItems: viewModel.places.compactMap { $0.geocodes.values.first }) { geocode in
                 MapMarker(coordinate: CLLocationCoordinate2D(latitude: geocode.latitude, longitude: geocode.longitude), tint: .red)
-            }
-            .onAppear {
-                viewModel.debounceUpdate(coordinate: region.center)
             }
             .onChange(of: region.center.latitude) { _ in
                 if abs(lastRegionCenter.latitude - region.center.latitude) > 0.001 ||
