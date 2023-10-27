@@ -7,10 +7,11 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 class MapViewModel: ObservableObject {
     @Published var places: [FourSquarePlace] = []
-    
+
     private let foursquareService = FoursquareService()
     private var updateTimer: Timer?
     
@@ -39,7 +40,6 @@ class MapViewModel: ObservableObject {
                 if let results = response?.results {
                     self.places = results
                     print(results.count)
-                    print(results)
                 }
             }
         }

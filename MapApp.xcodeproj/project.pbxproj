@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D091FC362AEBB01D00CCEC0E /* CenterCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091FC352AEBB01D00CCEC0E /* CenterCoordinate.swift */; };
-		D091FC382AEBB9C100CCEC0E /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091FC372AEBB9C100CCEC0E /* PlaceAnnotation.swift */; };
+		D091FC3A2AEBD28D00CCEC0E /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091FC392AEBD28D00CCEC0E /* PlaceDetailView.swift */; };
+		D091FC3C2AEBD54800CCEC0E /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091FC3B2AEBD54800CCEC0E /* CustomAnnotationView.swift */; };
+		D091FC402AEBE8CE00CCEC0E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091FC3F2AEBE8CE00CCEC0E /* Constants.swift */; };
 		D095EB352AEA9D02003C55DA /* MapAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB342AEA9D02003C55DA /* MapAppApp.swift */; };
 		D095EB372AEA9D02003C55DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB362AEA9D02003C55DA /* ContentView.swift */; };
 		D095EB392AEA9D03003C55DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D095EB382AEA9D03003C55DA /* Assets.xcassets */; };
@@ -41,8 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D091FC352AEBB01D00CCEC0E /* CenterCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterCoordinate.swift; sourceTree = "<group>"; };
-		D091FC372AEBB9C100CCEC0E /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
+		D091FC392AEBD28D00CCEC0E /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
+		D091FC3B2AEBD54800CCEC0E /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
+		D091FC3F2AEBE8CE00CCEC0E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D095EB312AEA9D02003C55DA /* MapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D095EB342AEA9D02003C55DA /* MapAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppApp.swift; sourceTree = "<group>"; };
 		D095EB362AEA9D02003C55DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,8 @@
 			children = (
 				D095EB672AEAC921003C55DA /* MapView.swift */,
 				D095EB692AEACADC003C55DA /* MapViewModel.swift */,
+				D091FC392AEBD28D00CCEC0E /* PlaceDetailView.swift */,
+				D091FC3B2AEBD54800CCEC0E /* CustomAnnotationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,8 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				D095EB652AEAC908003C55DA /* FourSquarePlace.swift */,
-				D091FC352AEBB01D00CCEC0E /* CenterCoordinate.swift */,
-				D091FC372AEBB9C100CCEC0E /* PlaceAnnotation.swift */,
+				D091FC3F2AEBE8CE00CCEC0E /* Constants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,10 +306,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D095EB372AEA9D02003C55DA /* ContentView.swift in Sources */,
-				D091FC382AEBB9C100CCEC0E /* PlaceAnnotation.swift in Sources */,
 				D095EB682AEAC921003C55DA /* MapView.swift in Sources */,
-				D091FC362AEBB01D00CCEC0E /* CenterCoordinate.swift in Sources */,
 				D095EB352AEA9D02003C55DA /* MapAppApp.swift in Sources */,
+				D091FC3C2AEBD54800CCEC0E /* CustomAnnotationView.swift in Sources */,
+				D091FC3A2AEBD28D00CCEC0E /* PlaceDetailView.swift in Sources */,
+				D091FC402AEBE8CE00CCEC0E /* Constants.swift in Sources */,
 				D095EB5F2AEA9E27003C55DA /* FourSquareService.swift in Sources */,
 				D095EB6A2AEACADC003C55DA /* MapViewModel.swift in Sources */,
 				D095EB612AEA9EAC003C55DA /* AnnotatedItem.swift in Sources */,
