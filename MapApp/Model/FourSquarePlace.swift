@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FourSquareResult: Codable {
+struct FourSquarePlace: Codable, Identifiable {
     struct Category: Codable {
         let id: Int
         let name: String
@@ -26,7 +26,8 @@ struct FourSquareResult: Codable {
         let name: String
     }
 
-    struct Geocode: Codable {
+    struct Geocode: Codable, Identifiable {
+        let id = UUID()
         let latitude: Double
         let longitude: Double
     }
@@ -36,12 +37,13 @@ struct FourSquareResult: Codable {
         let address_extended: String?
         let country: String
         let formatted_address: String
-        let locality: String
+        let locality: String?
         let postcode: String?
-        let region: String
+        let region: String?
     }
 
     let fsq_id: String
+    var id: String { fsq_id }
     let categories: [Category]
     let chains: [Chain]?
     let distance: Int

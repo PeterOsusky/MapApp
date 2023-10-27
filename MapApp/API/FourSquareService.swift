@@ -12,7 +12,7 @@ class FoursquareService {
     
     private let authorizationToken = "fsq3BdIvFwpCKTGbZrBAlL8GKOC/cJtgB5prVWKIXyVd/I0="
 
-    func fetchVenueDetails(for location: CLLocationCoordinate2D, completion: @escaping (FourSquareResponse?) -> Void) {
+    func fetchPlaceDetails(for location: CLLocationCoordinate2D, completion: @escaping (FourSquareResponse?) -> Void) {
         guard let url = URL(string: "https://api.foursquare.com/v3/places/search?ll=\(location.latitude),\(location.longitude)") else {
             completion(nil)
             return
@@ -52,5 +52,5 @@ class FoursquareService {
 }
 
 struct FourSquareResponse: Codable {
-    let results: [FourSquareResult]
+    let results: [FourSquarePlace]
 }

@@ -6,9 +6,3 @@
 //
 
 import Foundation
-import CoreLocation
-
-struct AnnotatedItem: Identifiable {
-    let id = UUID()
-    let coordinate: CLLocationCoordinate2D
-}

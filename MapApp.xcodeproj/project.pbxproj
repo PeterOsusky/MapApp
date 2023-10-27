@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D091FC362AEBB01D00CCEC0E /* CenterCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091FC352AEBB01D00CCEC0E /* CenterCoordinate.swift */; };
+		D091FC382AEBB9C100CCEC0E /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091FC372AEBB9C100CCEC0E /* PlaceAnnotation.swift */; };
 		D095EB352AEA9D02003C55DA /* MapAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB342AEA9D02003C55DA /* MapAppApp.swift */; };
 		D095EB372AEA9D02003C55DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB362AEA9D02003C55DA /* ContentView.swift */; };
 		D095EB392AEA9D03003C55DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D095EB382AEA9D03003C55DA /* Assets.xcassets */; };
@@ -16,7 +18,7 @@
 		D095EB522AEA9D04003C55DA /* MapAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB512AEA9D04003C55DA /* MapAppUITestsLaunchTests.swift */; };
 		D095EB5F2AEA9E27003C55DA /* FourSquareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB5E2AEA9E27003C55DA /* FourSquareService.swift */; };
 		D095EB612AEA9EAC003C55DA /* AnnotatedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB602AEA9EAC003C55DA /* AnnotatedItem.swift */; };
-		D095EB662AEAC908003C55DA /* FourSquareResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB652AEAC908003C55DA /* FourSquareResult.swift */; };
+		D095EB662AEAC908003C55DA /* FourSquarePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB652AEAC908003C55DA /* FourSquarePlace.swift */; };
 		D095EB682AEAC921003C55DA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB672AEAC921003C55DA /* MapView.swift */; };
 		D095EB6A2AEACADC003C55DA /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095EB692AEACADC003C55DA /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D091FC352AEBB01D00CCEC0E /* CenterCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterCoordinate.swift; sourceTree = "<group>"; };
+		D091FC372AEBB9C100CCEC0E /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		D095EB312AEA9D02003C55DA /* MapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D095EB342AEA9D02003C55DA /* MapAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppApp.swift; sourceTree = "<group>"; };
 		D095EB362AEA9D02003C55DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,7 +55,7 @@
 		D095EB512AEA9D04003C55DA /* MapAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D095EB5E2AEA9E27003C55DA /* FourSquareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareService.swift; sourceTree = "<group>"; };
 		D095EB602AEA9EAC003C55DA /* AnnotatedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotatedItem.swift; sourceTree = "<group>"; };
-		D095EB652AEAC908003C55DA /* FourSquareResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareResult.swift; sourceTree = "<group>"; };
+		D095EB652AEAC908003C55DA /* FourSquarePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquarePlace.swift; sourceTree = "<group>"; };
 		D095EB672AEAC921003C55DA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D095EB692AEACADC003C55DA /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,7 +165,9 @@
 		D095EB642AEAC8CB003C55DA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D095EB652AEAC908003C55DA /* FourSquareResult.swift */,
+				D095EB652AEAC908003C55DA /* FourSquarePlace.swift */,
+				D091FC352AEBB01D00CCEC0E /* CenterCoordinate.swift */,
+				D091FC372AEBB9C100CCEC0E /* PlaceAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,12 +303,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D095EB372AEA9D02003C55DA /* ContentView.swift in Sources */,
+				D091FC382AEBB9C100CCEC0E /* PlaceAnnotation.swift in Sources */,
 				D095EB682AEAC921003C55DA /* MapView.swift in Sources */,
+				D091FC362AEBB01D00CCEC0E /* CenterCoordinate.swift in Sources */,
 				D095EB352AEA9D02003C55DA /* MapAppApp.swift in Sources */,
 				D095EB5F2AEA9E27003C55DA /* FourSquareService.swift in Sources */,
 				D095EB6A2AEACADC003C55DA /* MapViewModel.swift in Sources */,
 				D095EB612AEA9EAC003C55DA /* AnnotatedItem.swift in Sources */,
-				D095EB662AEAC908003C55DA /* FourSquareResult.swift in Sources */,
+				D095EB662AEAC908003C55DA /* FourSquarePlace.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
