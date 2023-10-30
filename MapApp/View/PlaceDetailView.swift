@@ -13,10 +13,8 @@ struct PlaceDetailsView: View {
 
     var body: some View {
         VStack {
-            // Display the details of the place here, e.g.
             Text(place.name)
                 .font(.headline)
-            // Add more details as needed
         }
         .padding()
     }

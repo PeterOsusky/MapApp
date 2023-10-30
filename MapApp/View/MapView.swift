@@ -15,9 +15,8 @@ struct MapView: View {
         center: Constants.positionPrague,
         span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     )
-    @State private var lastRegionCenter = Constants.positionPrague
-    @State private var selectedPlace: FourSquarePlace?
     
+    @State private var lastRegionCenter = Constants.positionPrague
     @StateObject var viewModel = MapViewModel()
 
     var body: some View {
@@ -28,8 +27,8 @@ struct MapView: View {
                     .padding(.top)
                 Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: viewModel.places) { place in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.geocodes.values.first?.latitude ?? 0, longitude: place.geocodes.values.first?.longitude ?? 0)) {
-                        CustomAnnotationView(place: place, selectedPlace: $selectedPlace)
-                    }
+                        CustomAnnotationView(place: place)
+                    }                    
                 }
                 .edgesIgnoringSafeArea(.all)
                 .onChange(of: region.center.latitude) { _ in
@@ -38,13 +37,6 @@ struct MapView: View {
                         viewModel.debounceUpdate(coordinate: region.center)
                         lastRegionCenter = region.center
                     }
-                }
-                Spacer()
-                if let place = selectedPlace {
-                    PlaceDetailsView(place: place)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding()
                 }
             }
         }
