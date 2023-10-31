@@ -48,7 +48,7 @@ class FoursquareService {
             }
             
             guard let data = data else {
-                completion(.failure(.invalidURL)) // This can be another custom error indicating no data.
+                completion(.failure(.invalidURL))
                 return
             }
 

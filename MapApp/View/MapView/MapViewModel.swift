@@ -27,8 +27,7 @@ class MapViewModel: ObservableObject {
     }
     
     func fetchInitialData() {
-        let defaultCoordinate = CLLocationCoordinate2D(latitude: 50.0755, longitude: 14.4378) // Praha
-        showPlaces(coordinate: defaultCoordinate)
+        showPlaces(coordinate: Constants.positionPrague)
         print("fetch init data")
     }
     
@@ -43,7 +42,6 @@ class MapViewModel: ObservableObject {
                     print(response.results.count)
                     
                 case .failure(let error):
-                    // Handle or print the error here
                     print("Failed to fetch place details: \(error)")
                 }
             }

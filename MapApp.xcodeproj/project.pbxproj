@@ -190,8 +190,8 @@
 		D095EB642AEAC8CB003C55DA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D095EB652AEAC908003C55DA /* FoursquarePlace.swift */,
 				D091FC3F2AEBE8CE00CCEC0E /* Constants.swift */,
+				D095EB652AEAC908003C55DA /* FoursquarePlace.swift */,
 				D091016C2AF1114700BB1D3E /* FoursquarePhoto.swift */,
 			);
 			path = Model;

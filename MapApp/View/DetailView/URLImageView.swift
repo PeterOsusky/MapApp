@@ -18,7 +18,7 @@ struct URLImageView: View {
     }
     
     var body: some View {
-        Image(uiImage: self.uiImage ?? UIImage(systemName: "photo")!) // Use a placeholder image if the image hasn't loaded.
+        Image(uiImage: self.uiImage ?? UIImage(systemName: "photo")!)
             .resizable()
             .onAppear(perform: loadImage)
     }
