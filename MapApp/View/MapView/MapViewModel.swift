@@ -8,12 +8,15 @@
 import Foundation
 import CoreLocation
 import MapKit
+import Combine
 
 class MapViewModel: ObservableObject {
     @Published var places: [FoursquarePlace] = []
 
     private let foursquareService = FoursquareService()
     private var updateTimer: Timer?
+    private var cancellables: Set<AnyCancellable> = []
+
     
     init() {
         fetchInitialData()
@@ -32,19 +35,16 @@ class MapViewModel: ObservableObject {
     }
     
     func showPlaces(coordinate: CLLocationCoordinate2D) {
-        foursquareService.fetchPlaceDetails(for: coordinate) { [weak self] result in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                
-                switch result {
-                case .success(let response):
-                    self.places = response.results
-                    print(response.results.count)
-                    
-                case .failure(let error):
-                    print("Failed to fetch place details: \(error)")
+        foursquareService.fetchPlaceDetails(for: coordinate)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error): print("Failed to fetch place details: \(error)")
                 }
-            }
-        }
+            }, receiveValue: { [weak self] response in
+                self?.places = response.results
+                print(response.results.count)
+            })
+            .store(in: &cancellables)
     }
 }

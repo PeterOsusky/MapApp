@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import Combine
 
 class FoursquareService {
     
@@ -19,46 +20,36 @@ class FoursquareService {
         case decodingError(Error)
     }
     
-    func fetchPlaceDetails(for location: CLLocationCoordinate2D, completion: @escaping (Result<FoursquareResponse, FoursquareError>) -> Void) {
+    func fetchPlaceDetails(for location: CLLocationCoordinate2D) -> AnyPublisher<FoursquareResponse, FoursquareError> {
         guard let url = URL(string: "\(baseURL)/search?ll=\(location.latitude),\(location.longitude)") else {
-            completion(.failure(.invalidURL))
-            return
+            return Fail(outputType: FoursquareResponse.self, failure: FoursquareError.invalidURL).eraseToAnyPublisher()
         }
-        makeRequest(with: url, completion: completion)
-    }
-    
-    func fetchPhotos(for placeID: String, completion: @escaping (Result<[FourSquarePhoto], FoursquareError>) -> Void) {
-        guard let url = URL(string: "\(baseURL)/\(placeID)/photos") else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        makeRequest(with: url, completion: completion)
+        return makeRequest(with: url)
     }
 
-    private func makeRequest<T: Codable>(with url: URL, completion: @escaping (Result<T, FoursquareError>) -> Void) {
+    func fetchPhotos(for placeID: String) -> AnyPublisher<[FourSquarePhoto], FoursquareError> {
+        guard let url = URL(string: "\(baseURL)/\(placeID)/photos") else {
+            return Fail(outputType: [FourSquarePhoto].self, failure: FoursquareError.invalidURL).eraseToAnyPublisher()
+        }
+        return makeRequest(with: url)
+    }
+
+    private func makeRequest<T: Codable>(with url: URL) -> AnyPublisher<T, FoursquareError> {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "accept")
         request.setValue(authorizationToken, forHTTPHeaderField: "Authorization")
 
-        URLSession.shared.dataTask(with: request) { data, _, error in
-            if let error = error {
-                completion(.failure(.networkError(error)))
-                return
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .mapError { .networkError($0) }
+            .flatMap { data, _ -> AnyPublisher<T, FoursquareError> in
+                let decoder = JSONDecoder()
+                return Just(data)
+                    .decode(type: T.self, decoder: decoder)
+                    .mapError { .decodingError($0) }
+                    .eraseToAnyPublisher()
             }
-            
-            guard let data = data else {
-                completion(.failure(.invalidURL))
-                return
-            }
-
-            do {
-                let response = try JSONDecoder().decode(T.self, from: data)
-                completion(.success(response))
-            } catch let decodingError {
-                completion(.failure(.decodingError(decodingError)))
-            }
-        }.resume()
+            .eraseToAnyPublisher()
     }
 }
 
