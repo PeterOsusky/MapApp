@@ -49,8 +49,34 @@ class FoursquareService {
 
         dataTask.resume()
     }
+    
+    func fetchPhotos(for placeID: String, completion: @escaping (Result<[FourSquarePhoto], Error>) -> Void) {
+        guard let url = URL(string: "https://api.foursquare.com/v3/places/\(placeID)/photos") else {
+            completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
+            return
+        }
+
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+        request.setValue(authorizationToken, forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let data = data, let photosResponse = try? JSONDecoder().decode([FourSquarePhoto].self, from: data) else {
+                completion(.failure(NSError(domain: "Decoding Error", code: -1, userInfo: nil)))
+                return
+            }
+
+            completion(.success(photosResponse))
+        }.resume()
+    }
 }
 
 struct FourSquareResponse: Codable {
-    let results: [FourSquarePlace]
+    let results: [FoursquarePlace]
 }

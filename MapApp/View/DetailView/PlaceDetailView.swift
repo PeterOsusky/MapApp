@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 struct PlaceDetailsView: View {
-    var place: FourSquarePlace
+    var place: FoursquarePlace
+    @ObservedObject var viewModel = DetailViewModel()
 
     var body: some View {
         ScrollView {
@@ -43,6 +44,17 @@ struct PlaceDetailsView: View {
                 .font(.subheadline)
                 .foregroundColor(.gray)
                 
+                // 3. Photos (Horizontal scroll)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(viewModel.photos, id: \.id) { photo in
+                            URLImageView(withURL: photo.fullURL)
+                                .frame(width: 150, height: 150)
+                                .cornerRadius(10)
+                        }
+                    }
+                    .padding(.top, 10)
+                }
                 
                 // 4. Geolocation
                 if let mainGeocode = place.geocodes["main"] {
@@ -62,6 +74,9 @@ struct PlaceDetailsView: View {
                 
             }
             .padding()
+        }
+        .onAppear {
+            viewModel.fetchPhotos(for: place.id)
         }
     }
 }

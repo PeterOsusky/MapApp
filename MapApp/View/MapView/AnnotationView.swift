@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct AnnotationView: View {
-    var place: FourSquarePlace
+    var place: FoursquarePlace
     @State private var isPopoverPresented = false
 
 

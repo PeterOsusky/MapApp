@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FourSquarePlace: Codable, Identifiable {
+struct FoursquarePlace: Codable, Identifiable {
     struct Category: Codable {
         let id: Int
         let name: String

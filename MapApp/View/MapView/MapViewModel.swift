@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 
 class MapViewModel: ObservableObject {
-    @Published var places: [FourSquarePlace] = []
+    @Published var places: [FoursquarePlace] = []
 
     private let foursquareService = FoursquareService()
     private var updateTimer: Timer?
