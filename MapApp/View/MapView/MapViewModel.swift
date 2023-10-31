@@ -33,13 +33,18 @@ class MapViewModel: ObservableObject {
     }
     
     func showPlaces(coordinate: CLLocationCoordinate2D) {
-        foursquareService.fetchPlaceDetails(for: coordinate) { [weak self] response in
+        foursquareService.fetchPlaceDetails(for: coordinate) { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 
-                if let results = response?.results {
-                    self.places = results
-                    print(results.count)
+                switch result {
+                case .success(let response):
+                    self.places = response.results
+                    print(response.results.count)
+                    
+                case .failure(let error):
+                    // Handle or print the error here
+                    print("Failed to fetch place details: \(error)")
                 }
             }
         }

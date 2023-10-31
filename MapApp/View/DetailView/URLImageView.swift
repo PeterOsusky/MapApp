@@ -1,5 +1,5 @@
 //
-//  ImageView.swift
+//  URLImageView.swift
 //  MapApp
 //
 //  Created by Peter on 31/10/2023.

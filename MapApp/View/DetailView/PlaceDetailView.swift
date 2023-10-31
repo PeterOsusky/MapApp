@@ -16,7 +16,6 @@ struct PlaceDetailsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 15) {
                 
-                // 1. Place Name & Categories
                 Text(place.name)
                     .font(.largeTitle)
                     .padding(.top)
@@ -33,7 +32,6 @@ struct PlaceDetailsView: View {
                     }
                 }
                 
-                // 2. Location Details
                 Group {
                     Text(place.location.formatted_address)
                     if let locality = place.location.locality, let region = place.location.region {
@@ -44,7 +42,6 @@ struct PlaceDetailsView: View {
                 .font(.subheadline)
                 .foregroundColor(.gray)
                 
-                // 3. Photos (Horizontal scroll)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
                         ForEach(viewModel.photos, id: \.id) { photo in
@@ -56,13 +53,15 @@ struct PlaceDetailsView: View {
                     .padding(.top, 10)
                 }
                 
-                // 4. Geolocation
                 if let mainGeocode = place.geocodes["main"] {
                     Text("Latitude: \(mainGeocode.latitude)")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
                     Text("Longitude: \(mainGeocode.longitude)")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
                 }
                 
-                // 5. More Information
                 Group {
                     if let chains = place.chains, !chains.isEmpty {
                         Text("Part of chains: \(chains.map { $0.name }.joined(separator: ", "))")
