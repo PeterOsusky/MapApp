@@ -22,13 +22,10 @@ struct MapView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("MapApp")
-                    .font(.largeTitle)
-                    .padding(.top)
                 Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: viewModel.places) { place in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.geocodes.values.first?.latitude ?? 0, longitude: place.geocodes.values.first?.longitude ?? 0)) {
-                        CustomAnnotationView(place: place)
-                    }                    
+                        AnnotationView(place: place)
+                    }
                 }
                 .edgesIgnoringSafeArea(.all)
                 .onChange(of: region.center.latitude) { _ in

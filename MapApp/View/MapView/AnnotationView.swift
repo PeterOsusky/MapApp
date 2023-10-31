@@ -1,5 +1,5 @@
 //
-//  CustomAnnotationView.swift
+//  AnnotationView.swift
 //  MapApp
 //
 //  Created by Peter on 27/10/2023.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct CustomAnnotationView: View {
+struct AnnotationView: View {
     var place: FourSquarePlace
     @State private var isPopoverPresented = false
 
@@ -22,7 +22,7 @@ struct CustomAnnotationView: View {
                 .frame(width: 20, height: 20)
                 .foregroundColor(.red)
         }
-        .popover(isPresented: $isPopoverPresented) {
+        .sheet(isPresented: $isPopoverPresented) {
             PlaceDetailsView(place: place)
         }
     }

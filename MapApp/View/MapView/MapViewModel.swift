@@ -21,7 +21,7 @@ class MapViewModel: ObservableObject {
     
     func debounceUpdate(coordinate: CLLocationCoordinate2D) {
         updateTimer?.invalidate()
-        updateTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
+        updateTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { [weak self] _ in
             self?.showPlaces(coordinate: coordinate)
         }
     }
