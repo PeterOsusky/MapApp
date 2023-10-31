@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class DetailViewModel: ObservableObject {
+class PlaceDetailViewModel: ObservableObject {
     @Published var photos: [FourSquarePhoto] = []
     private var service: FoursquareService
     private var cancellables: Set<AnyCancellable> = []

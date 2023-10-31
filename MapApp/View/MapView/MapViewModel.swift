@@ -31,7 +31,6 @@ class MapViewModel: ObservableObject {
     
     func fetchInitialData() {
         showPlaces(coordinate: Constants.positionPrague)
-        print("fetch init data")
     }
     
     func showPlaces(coordinate: CLLocationCoordinate2D) {
