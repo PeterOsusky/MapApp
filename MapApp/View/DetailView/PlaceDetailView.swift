@@ -61,16 +61,6 @@ struct PlaceDetailsView: View {
                         .font(.footnote)
                         .foregroundColor(.gray)
                 }
-                
-                Group {
-                    if let chains = place.chains, !chains.isEmpty {
-                        Text("Part of chains: \(chains.map { $0.name }.joined(separator: ", "))")
-                    }
-                    Link("More Details", destination: URL(string: place.link)!)
-                }
-                .font(.footnote)
-                .foregroundColor(.gray)
-                
             }
             .padding()
         }
