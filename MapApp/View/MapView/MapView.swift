@@ -9,7 +9,6 @@ import SwiftUI
 import MapKit
 import Combine
 
-
 struct MapView: View {
     @State private var region = MKCoordinateRegion(
         center: Constants.positionPrague,

@@ -13,12 +13,21 @@ struct PlaceDetailGeocodeView: View {
 
     var body: some View {
         if let mainGeocode = place.geocodes["main"] {
-            Text("Latitude: \(mainGeocode.latitude)")
-                .font(.footnote)
-                .foregroundColor(.gray)
-            Text("Longitude: \(mainGeocode.longitude)")
-                .font(.footnote)
-                .foregroundColor(.gray)
+            HStack(alignment: .center, spacing: 8) {
+                Image(systemName: "location.circle.fill")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(.gray)
+                
+                VStack(alignment: .leading) {
+                    Text("Latitude: \(mainGeocode.latitude)")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                    Text("Longitude: \(mainGeocode.longitude)")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                }
+            }
         }
     }
 }
