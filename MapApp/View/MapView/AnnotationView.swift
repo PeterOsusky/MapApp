@@ -24,6 +24,7 @@ struct AnnotationView: View {
         }
         .sheet(isPresented: $isPopoverPresented) {
             PlaceDetailsView(place: place)
+                .presentationDetents([.medium, .large])
         }
     }
 }

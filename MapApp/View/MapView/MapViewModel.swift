@@ -35,6 +35,7 @@ class MapViewModel: ObservableObject {
     
     func showPlaces(coordinate: CLLocationCoordinate2D) {
         foursquareService.fetchPlaceDetails(for: coordinate)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished: break
@@ -42,7 +43,6 @@ class MapViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] response in
                 self?.places = response.results
-                print(response.results.count)
             })
             .store(in: &cancellables)
     }
