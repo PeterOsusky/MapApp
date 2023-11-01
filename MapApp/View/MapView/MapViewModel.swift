@@ -16,7 +16,6 @@ class MapViewModel: ObservableObject {
     private let foursquareService = FoursquareService()
     private var updateTimer: Timer?
     private var cancellables: Set<AnyCancellable> = []
-
     
     init() {
         fetchInitialData()

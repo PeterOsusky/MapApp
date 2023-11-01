@@ -12,7 +12,6 @@ struct AnnotationView: View {
     var place: FoursquarePlace
     @State private var isPopoverPresented = false
 
-
     var body: some View {
         Button(action: {
             self.isPopoverPresented = true
@@ -28,4 +27,3 @@ struct AnnotationView: View {
         }
     }
 }
-
