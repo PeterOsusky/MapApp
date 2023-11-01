@@ -10,6 +10,8 @@ import Combine
 
 class PlaceDetailViewModel: ObservableObject {
     @Published var photos: [FourSquarePhoto] = []
+    @Published var isInternetError: Bool = false
+
     private var service: FoursquareService
     private var cancellables: Set<AnyCancellable> = []
 
@@ -25,7 +27,10 @@ class PlaceDetailViewModel: ObservableObject {
                 case .finished:
                     break
                 case .failure(let error):
-                    print("Failed to fetch photos: \(error.localizedDescription)")
+                    print("Failed to fetch place details: \(error)")
+                    if error.isNetworkError {
+                        self.isInternetError = true
+                    }  
                 }
             }, receiveValue: { photos in
                 self.photos = photos

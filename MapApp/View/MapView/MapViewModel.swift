@@ -12,6 +12,7 @@ import Combine
 
 class MapViewModel: ObservableObject {
     @Published var places: [FoursquarePlace] = []
+    @Published var isInternetError: Bool = false
 
     private let foursquareService = FoursquareService()
     private var updateTimer: Timer?
@@ -38,8 +39,11 @@ class MapViewModel: ObservableObject {
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished: break
-                case .failure(let error): print("Failed to fetch place details: \(error)")
-                }
+                case .failure(let error):
+                    print("Failed to fetch place details: \(error)")
+                    if error.isNetworkError {
+                        self.isInternetError = true
+                    }                }
             }, receiveValue: { [weak self] response in
                 self?.places = response.results
             })

@@ -21,6 +21,15 @@ struct PlaceDetailsView: View {
                 PlaceDetailGeocodeView(place: place)
             }
             .padding()
+            .alert(isPresented: $viewModel.isInternetError) {
+                Alert(
+                    title: Text("Network Error"),
+                    message: Text("No internet connection available."),
+                    dismissButton: .default(Text("OK")) {
+                        viewModel.isInternetError = false
+                    }
+                )
+            }
         }
         .onAppear {
             viewModel.fetchPhotos(for: place.id)
