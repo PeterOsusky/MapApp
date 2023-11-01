@@ -32,8 +32,8 @@ struct ImageView: View {
         AsyncImage(url: url, transaction: Transaction(animation: .easeInOut)) { phase in
             switch phase {
             case .empty:
-                Image(systemName: "photo")
-                    .resizable()
+                ProgressView()
+                    .frame(width: 150, height: 150)
             case .success(let image):
                 image.resizable()
             case .failure:
